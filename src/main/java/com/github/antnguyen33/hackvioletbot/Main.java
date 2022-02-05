@@ -5,13 +5,14 @@ import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.message.component.ActionRow;
 import org.javacord.api.entity.message.component.Button;
+import org.javacord.api.entity.message.component.SelectMenu;
 import org.javacord.api.interaction.MessageComponentInteraction;
 
 public class Main {
 
     public static void main(String[] args) {
         // Insert your bot's token here
-        String token = "OTM5NTM4MDkzNjY3NjYzOTUy.Yf6TCQ.q40U-p9Hz_-vajTlj5--x7Y30cg";
+        String token = "antony dumbass";
 
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
 
