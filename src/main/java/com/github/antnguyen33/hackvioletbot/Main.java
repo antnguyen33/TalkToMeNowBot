@@ -5,16 +5,19 @@ import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.message.component.ActionRow;
 import org.javacord.api.entity.message.component.Button;
+import org.javacord.api.entity.message.component.SelectMenu;
 import org.javacord.api.interaction.MessageComponentInteraction;
 
 public class Main {
 
     public static void main(String[] args) {
         // Insert your bot's token here
-        String token = "textdn";
+        String token = "antony dumbass";
 
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
 
+        
+        
         // Add a listener which answers with abuse resources at Virginia Tech when user types !ping
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!vtresources")) {
@@ -27,36 +30,58 @@ public class Main {
                     + " - Virginia Tech Police Department: 540-382-4343! ``` ");
             }
         });
+        
+        
+        
+        MessageBuilder mb1 = new MessageBuilder()
+        .setContent("How have you been?")
+        .addComponents(
+            ActionRow.of(Button.primary("good", "I am good today!"),
+                Button.primary("bad", "I am not feeling well today.")));
+        
+        
+        MessageBuilder mb2 = new MessageBuilder()
+            .setContent("I'm sorry to hear that. Is there anything I can hear you out on?")
+            .addComponents(
+                ActionRow.of(SelectMenu.create("options", "What's going on?", 1, 1,
+                    Arrays.asList(SelectMenuOption.create("Anxiety and/or Stress", "Stress", "Feeling anxious or stressed"),
+                        SelectMenuOption.create("Bullying", "Bullying", "Constant unwanted harrassment"),
+                        SelectMenuOption.create("Depression", "Depression", "Consistently feeling down and unmotivated"),
+                        SelectMenuOption.create("Assault", "Assault", "Any type of physical/sexual assault"),
+                        SelectMenuOption.create("I am suicidal and need help", "Help", "")))));
+       
+        
+        
+        
+        
+        
+        
         //Add a listener which answer with possible input calls when the user types !help, should be public  
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!help")) {
-            new MessageBuilder()
-            .setContent("Click on one of these Buttons!")
-            .addComponents(
-                ActionRow.of(Button.success("success", "Send a message"),
-                    Button.primary("danger", "Delete this message"),
-                    Button.secondary("secondary", "Remind me after 5 minutes")))
-            .send(event.getChannel());
+                mb1.send(event.getChannel());
             }
         });
             
+        
+        
         api.addMessageComponentCreateListener(event -> {
             MessageComponentInteraction messageComponentInteraction = event.getMessageComponentInteraction();
             String customId = messageComponentInteraction.getCustomId();
 
             switch (customId) {
-                case "success":
+                case "good":
                     messageComponentInteraction.createImmediateResponder()
-                            .setContent("You clicked a button!")
+                            .setContent("hyperpoggies")
                             .respond();
                     break;
-                case "secondary":
-                    messageComponentInteraction.respondLater().thenAccept(interactionOriginalResponseUpdater -> {
-                        //Code to respond after 5 minutes
-                    });
+                case "bad":
+                            mb2.send(event.getChannel());
                     break;
             }
         });
+        
+        
         // Print the invite url of your bot
         System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
     }
