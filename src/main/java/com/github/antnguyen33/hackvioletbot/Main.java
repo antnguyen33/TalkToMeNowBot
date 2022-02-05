@@ -30,7 +30,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // Insert your Discord account's development token
-        String token = "placeholderToken";
+        String token =
+            "OTM5NTM4MDkzNjY3NjYzOTUy.Yf6TCQ.AQ53qY76i062j9GF65qnLOoZIVE";
 
         // Loads TalkToMeNow bot into given Discord server
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
@@ -39,50 +40,42 @@ public class Main {
         // These commands are all proceeded by '!' and must be sent alone to be
         // recognized by the bot's listeners
         // TODO looking to implement object listener instead of message listener
-        
-        //commands embeded
-        
-EmbedBuilder commands = new EmbedBuilder()
-            .setTitle("Commands")
-            .setDescription("List of Commands")
-            .setAuthor("TalkToMeBot")
-            .addField("Commands", "Hi! How can I help you?\n"
-                + "!help - Offers support resources for multiple difficulties\n"
-                + "!vtresouces - Available resources at Virginia Tech"
-                + "!music - Links a YouTUbe playlist of relaxing music\n"
-                + "!rain - Links raining audio to help you sleep\n"
-                + "!cats - Links a funny cat video on YouTube\n"
-                + "!games - Play a random online game")
+
+        // commands embeded
+
+        EmbedBuilder commands = new EmbedBuilder().setDescription(
+            "List of Commands").setAuthor("TalkToMeBot").addField(
+                "Hi! How can I help you?",
+                "!talk - Offers support resources for multiple difficulties\n"
+                    + "!vtresources - Available resources at Virginia Tech\n"
+                    + "!music - Links a YouTube playlist of relaxing music\n"
+                    + "!rain - Links raining audio to help you sleep\n"
+                    + "!cats - Links a funny cat video on YouTube\n"
+                    + "!games - Play a random online game").setColor(
+                        Color.BLUE);
+
+// resources embeded
+
+        EmbedBuilder resources = new EmbedBuilder().setTitle(
+            "Resources at Virginia Tech").setDescription(
+                "List of helpful numbers and people to contact").setAuthor(
+                    "TalkToMeBot").addField("Contact",
+                        " - Women's Center at Virginia Tech: 540-231-7806\r\n"
+                            + " - Women's Resource Center of the New River Valley: 540-639-1123\r\n"
+                            + " - Katie Polidoro: Title IX Coordinator: 540-231-1824\r\n"
+                            + " - Cook Counseling Center: 540-231-6557\r\n"
+                            + " - Dean of Students Office: 540-231-3787\r\n"
+                            + " - Virginia Tech Police Department: 540-382-4343")
             .setColor(Color.BLUE);
 
-//resources embeded
-        
-        EmbedBuilder resources = new EmbedBuilder()
-            .setTitle("Resources at Virginia Tech")
-            .setDescription("List of helpful numbers and people to contact")
-            .setAuthor("TalkToMeBot")
-            .addField("Contact", " - Women's Center at Virginia Tech: 540-231-7806\r\n"
-                + " - Women's Resource Center of the New River Valley: 540-639-1123\r\n"
-                + " - Katie Polidoro: Title IX Coordinator: 540-231-1824\r\n"
-                + " - Cook Counseling Center: 540-231-6557\r\n"
-                + " - Dean of Students Office: 540-231-3787\r\n"
-                + " - Virginia Tech Police Department: 540-382-4343")
-            .setColor(Color.BLUE);
-        
-        
-        
-        // Listener for !talk command
+        // Listener for !help command
         // !talk - starts user-bot interaction by giving list of available
         // commands and their descriptions
         api.addMessageCreateListener(event -> {
-            if (event.getMessageContent().equalsIgnoreCase("!talk")) {
+            if (event.getMessageContent().equalsIgnoreCase("!help")) {
                 event.getChannel().sendMessage(commands);
             }
         });
-        
-        
-        
-        
 
         // Listener for !vtresources command
         // !vtresources - Displays available support resources offered by
@@ -97,7 +90,7 @@ EmbedBuilder commands = new EmbedBuilder()
         // !help - Prompts user with a button interface to choose from multiple
         // issues (e.g. depression, anxiety, etc.)
         api.addMessageCreateListener(event -> {
-            if (event.getMessageContent().equalsIgnoreCase("!help")) {
+            if (event.getMessageContent().equalsIgnoreCase("!talk")) {
                 new MessageBuilder().setContent(
                     "What are you dealing with right now?").addComponents(
                         ActionRow.of(Button.primary("anxiety",
@@ -120,23 +113,35 @@ EmbedBuilder commands = new EmbedBuilder()
             switch (customId) {
                 case "anxiety":
                     messageComponentInteraction.createImmediateResponder()
-                        .setContent("1").respond();
+                        .setContent(
+                            "https://www.counseling.org/knowledge-center/mental-health-resources/depression\r\n\n"
+                                + "https://www.depression.org/bouldering-indoor-rock-climbing-as-group-therapy-treatment-for-depression")
+                        .respond();
                     break;
                 case "bully":
                     messageComponentInteraction.createImmediateResponder()
-                        .setContent("2").respond();
+                        .setContent("https://www.rainn.org/\r\n\n"
+                            + "https://www.psychologytoday.com/us/blog/trauma-and-hope/201704/overcoming-sexual-assault-symptoms-recovery\r\n\n"
+                            + "800.656.HOPE (24/7 Hotline)").respond();
                     break;
                 case "depression":
                     messageComponentInteraction.createImmediateResponder()
-                        .setContent("3").respond();
+                        .setContent("https://adaa.org/tips\r\n\n"
+                            + "https://www.verywellmind.com/manage-your-anxiety-2584184")
+                        .respond();
                     break;
                 case "assault":
                     messageComponentInteraction.createImmediateResponder()
-                        .setContent("4").respond();
+                        .setContent(
+                            "https://www.cdc.gov/violenceprevention/pdf/bullying-factsheet508.pdf\r\n\n"
+                                + "https://www.girlshealth.gov/bullying/school/index.html")
+                        .respond();
                     break;
                 case "suicide":
                     messageComponentInteraction.createImmediateResponder()
-                        .setContent("5").respond();
+                        .setContent("1(800) 273 TALK\n\n"
+                            + "https://www.nimh.nih.gov/health/topics/suicide-prevention")
+                        .respond();
                     break;
             }
         });
