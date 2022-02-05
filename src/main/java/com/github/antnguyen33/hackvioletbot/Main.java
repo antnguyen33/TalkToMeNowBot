@@ -2,12 +2,16 @@ package com.github.antnguyen33.hackvioletbot;
 
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
+import org.javacord.api.entity.message.MessageBuilder;
+import org.javacord.api.entity.message.component.ActionRow;
+import org.javacord.api.entity.message.component.Button;
+import org.javacord.api.interaction.MessageComponentInteraction;
 
 public class Main {
 
     public static void main(String[] args) {
         // Insert your bot's token here
-        String token = "OTM5NTM4MDkzNjY3NjYzOTUy.Yf6TCQ._VtH3hL6wIFErnTiOhoXst8npOY";
+        String token = "textdn";
 
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
 
@@ -26,13 +30,33 @@ public class Main {
         //Add a listener which answer with possible input calls when the user types !help, should be public  
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!help")) {
-                event.getChannel().sendMessage(
-                    " ```Welcome to the TalkToMeNow Bot,a responsive support chat bot \n"
-                    +"to interact with me, you can use !talk for a more tailored response \n"
-                    +"or I can provide you with a list of general resources if you need help more urgently using !vtresources```");
+            new MessageBuilder()
+            .setContent("Click on one of these Buttons!")
+            .addComponents(
+                ActionRow.of(Button.success("success", "Send a message"),
+                    Button.primary("danger", "Delete this message"),
+                    Button.secondary("secondary", "Remind me after 5 minutes")))
+            .send(event.getChannel());
             }
         });
+            
+        api.addMessageComponentCreateListener(event -> {
+            MessageComponentInteraction messageComponentInteraction = event.getMessageComponentInteraction();
+            String customId = messageComponentInteraction.getCustomId();
 
+            switch (customId) {
+                case "success":
+                    messageComponentInteraction.createImmediateResponder()
+                            .setContent("You clicked a button!")
+                            .respond();
+                    break;
+                case "secondary":
+                    messageComponentInteraction.respondLater().thenAccept(interactionOriginalResponseUpdater -> {
+                        //Code to respond after 5 minutes
+                    });
+                    break;
+            }
+        });
         // Print the invite url of your bot
         System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
     }
