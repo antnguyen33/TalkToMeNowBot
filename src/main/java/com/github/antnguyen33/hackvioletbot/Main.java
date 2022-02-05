@@ -32,12 +32,6 @@ public class Main {
                     +"or I can provide you with a list of general resources if you need help more urgently using !vtresources```");
             }
         });
-        api.addMessageCreateListener(event -> {
-            boolean poo = true;
-            if (poo == true) {
-                event.getChannel().sendMessage("poop");
-            }
-        });
 
         // Print the invite url of your bot
         System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
