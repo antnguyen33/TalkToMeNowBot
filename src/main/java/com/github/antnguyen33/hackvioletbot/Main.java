@@ -1,40 +1,28 @@
 package com.github.antnguyen33.hackvioletbot;
 
-import java.awt.Color;
-import java.io.File;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
-import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 public class Main {
 
     public static void main(String[] args) {
         // Insert your bot's token here
-        String token = "OTM5NTM4MDkzNjY3NjYzOTUy.Yf6TCQ.2NNuz9ZYxoi8wu5FoCGjXTYJt60";
+        String token = "placeholdertoken";
 
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
-        
-        EmbedBuilder resources = new EmbedBuilder()
-            .setTitle("Resources@VirginiaTech")
-            .setDescription("A collection of Women's resources at Virginia Tech")
-            .setAuthor("TalkToMeBot")
-            .addField("Resources", " - Women's Center at Virginia Tech: 540-231-7806\r\n"
-                + " - Women's Resource Center of the New River Valley: 540-639-1123\r\n"
-                + " - Katie Polidoro: Title IX Coordinator: 540-231-1824\r\n"
-                + " - Cook Counseling Center: 540-231-6557\r\n"
-                + " - Dean of Students Office: 540-231-3787\r\n"
-                + " - Virginia Tech Police Department: 540-382-4343")
-            .setColor(Color.yellow);
-        
+
         // Add a listener which answers with abuse resources at Virginia Tech when user types !ping
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!vtresources")) {
-                event.getChannel().sendMessage(resources);
+                event.getChannel().sendMessage(
+                    " ``` - Women's Center at Virginia Tech: 540-231-7806\r\n"
+                    + " - Women's Resource Center of the New River Valley: 540-639-1123\r\n"
+                    + " - Katie Polidoro: Title IX Coordinator: 540-231-1824\r\n"
+                    + " - Cook Counseling Center: 540-231-6557\r\n"
+                    + " - Dean of Students Office: 540-231-3787\r\n"
+                    + " - Virginia Tech Police Department: 540-382-4343! ``` ");
             }
         });
-        
-
- 
 
         // Print the invite url of your bot
         System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
