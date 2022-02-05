@@ -43,7 +43,12 @@ public class Main {
         MessageBuilder mb2 = new MessageBuilder()
             .setContent("I'm sorry to hear that. Is there anything I can hear you out on?")
             .addComponents(
-                ActionRow.of(SelectMenu.create("options", "What's going on?"))
+                ActionRow.of(SelectMenu.create("options", "What's going on?", 1, 1,
+                    Arrays.asList(SelectMenuOption.create("Anxiety and/or Stress", "Stress", "Feeling anxious or stressed"),
+                        SelectMenuOption.create("Bullying", "Bullying", "Constant unwanted harrassment"),
+                        SelectMenuOption.create("Depression", "Depression", "Consistently feeling down and unmotivated"),
+                        SelectMenuOption.create("Assault", "Assault", "Any type of physical/sexual assault"),
+                        SelectMenuOption.create("I am suicidal and need help", "Help", "")))));
        
         
         
@@ -71,9 +76,7 @@ public class Main {
                             .respond();
                     break;
                 case "bad":
-                    messageComponentInteraction.createImmediateResponder()
-                            .setContent("lol loser")
-                            .respond();
+                            mb2.send(event.getChannel());
                     break;
             }
         });
