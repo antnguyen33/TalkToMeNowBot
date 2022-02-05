@@ -1,6 +1,7 @@
 package com.github.antnguyen33.hackvioletbot;
 
 import java.awt.Color;
+import java.io.File;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
@@ -9,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Insert your bot's token here
-        String token = "temp";
+        String token = "OTM5NTM4MDkzNjY3NjYzOTUy.Yf6TCQ.2NNuz9ZYxoi8wu5FoCGjXTYJt60";
 
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
         
@@ -23,7 +24,7 @@ public class Main {
                 + " - Cook Counseling Center: 540-231-6557\r\n"
                 + " - Dean of Students Office: 540-231-3787\r\n"
                 + " - Virginia Tech Police Department: 540-382-4343")
-            .setColor(Color.BLUE);
+            .setColor(Color.yellow);
         
         // Add a listener which answers with abuse resources at Virginia Tech when user types !ping
         api.addMessageCreateListener(event -> {
