@@ -1,10 +1,12 @@
 package com.github.antnguyen33.hackvioletbot;
 
+import java.awt.Color;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.message.component.ActionRow;
 import org.javacord.api.entity.message.component.Button;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.interaction.MessageComponentInteraction;
 
 /**
@@ -37,34 +39,57 @@ public class Main {
         // These commands are all proceeded by '!' and must be sent alone to be
         // recognized by the bot's listeners
         // TODO looking to implement object listener instead of message listener
+        
+        //commands embeded
+        
+EmbedBuilder commands = new EmbedBuilder()
+            .setTitle("Commands")
+            .setDescription("List of Commands")
+            .setAuthor("TalkToMeBot")
+            .addField("Commands", "Hi! How can I help you?\n"
+                + "!help - Offers support resources for multiple difficulties\n"
+                + "!vtresouces - Available resources at Virginia Tech"
+                + "!music - Links a YouTUbe playlist of relaxing music\n"
+                + "!rain - Links raining audio to help you sleep\n"
+                + "!cats - Links a funny cat video on YouTube\n"
+                + "!games - Play a random online game")
+            .setColor(Color.BLUE);
 
+//resources embeded
+        
+        EmbedBuilder resources = new EmbedBuilder()
+            .setTitle("Resources at Virginia Tech")
+            .setDescription("List of helpful numbers and people to contact")
+            .setAuthor("TalkToMeBot")
+            .addField("Contact", " - Women's Center at Virginia Tech: 540-231-7806\r\n"
+                + " - Women's Resource Center of the New River Valley: 540-639-1123\r\n"
+                + " - Katie Polidoro: Title IX Coordinator: 540-231-1824\r\n"
+                + " - Cook Counseling Center: 540-231-6557\r\n"
+                + " - Dean of Students Office: 540-231-3787\r\n"
+                + " - Virginia Tech Police Department: 540-382-4343")
+            .setColor(Color.BLUE);
+        
+        
+        
         // Listener for !talk command
         // !talk - starts user-bot interaction by giving list of available
         // commands and their descriptions
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!talk")) {
-                event.getChannel().sendMessage("Hi! How can I help you?\n"
-                    + "!help - Offers support resources for multiple difficulties\n"
-                    + "!vtresouces - Available resources at Virginia Tech"
-                    + "!music - Links a YouTUbe playlist of relaxing music\n"
-                    + "!rain - Links raining audio to help you sleep\n"
-                    + "!cats - Links a funny cat video on YouTube\n"
-                    + "!games - Play a random online game");
+                event.getChannel().sendMessage(commands);
             }
         });
+        
+        
+        
+        
 
         // Listener for !vtresources command
         // !vtresources - Displays available support resources offered by
         // Virginia Tech
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!vtresources")) {
-                event.getChannel().sendMessage(
-                    " ``` - Women's Center at Virginia Tech: 540-231-7806\r\n"
-                        + " - Women's Resource Center of the New River Valley: 540-639-1123\r\n"
-                        + " - Katie Polidoro: Title IX Coordinator: 540-231-1824\r\n"
-                        + " - Cook Counseling Center: 540-231-6557\r\n"
-                        + " - Dean of Students Office: 540-231-3787\r\n"
-                        + " - Virginia Tech Police Department: 540-382-4343! ``` ");
+                event.getChannel().sendMessage(resources);
             }
         });
 
