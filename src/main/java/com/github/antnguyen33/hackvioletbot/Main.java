@@ -11,15 +11,20 @@ public class Main {
 
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
 
-        // Add a listener which answers with "Pong!" if someone writes "!ping"
+        // Add a listener which answers with abuse resources at Virginia Tech when user types !ping
         api.addMessageCreateListener(event -> {
-            if (event.getMessageContent().equalsIgnoreCase("!ping")) {
-                event.getChannel().sendMessage("Pong!");
+            if (event.getMessageContent().equalsIgnoreCase("!vtresources")) {
+                event.getChannel().sendMessage(
+                    " ``` - Women's Center at Virginia Tech: 540-231-7806\r\n"
+                    + " - Women's Resource Center of the New River Valley: 540-639-1123\r\n"
+                    + " - Katie Polidoro: Title IX Coordinator: 540-231-1824\r\n"
+                    + " - Cook Counseling Center: 540-231-6557\r\n"
+                    + " - Dean of Students Office: 540-231-3787\r\n"
+                    + " - Virginia Tech Police Department: 540-382-4343! ``` ");
             }
         });
 
         // Print the invite url of your bot
         System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
     }
-//test push dn
 }
