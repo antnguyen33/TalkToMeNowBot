@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Insert your bot's token here
-        String token = "preston is bitch";
+        String token = "OTM5NTM4MDkzNjY3NjYzOTUy.Yf6TCQ.q40U-p9Hz_-vajTlj5--x7Y30cg";
 
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
 
@@ -31,15 +31,29 @@ public class Main {
         });
         
         
+        
+        MessageBuilder mb1 = new MessageBuilder()
+        .setContent("How have you been?")
+        .addComponents(
+            ActionRow.of(Button.primary("good", "I am good today!"),
+                Button.primary("bad", "I am not feeling well today.")));
+        
+        
+        MessageBuilder mb2 = new MessageBuilder()
+            .setContent("I'm sorry to hear that. Is there anything I can hear you out on?")
+            .addComponents(
+                ActionRow.of(SelectMenu.create("options", "What's going on?"))
+       
+        
+        
+        
+        
+        
+        
         //Add a listener which answer with possible input calls when the user types !help, should be public  
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!help")) {
-            new MessageBuilder()
-                .setContent("How have you been?")
-                .addComponents(
-                    ActionRow.of(Button.primary("good", "I am good today!"),
-                        Button.primary("bad", "I am not feeling well today.")))
-                .send(event.getChannel());
+                mb1.send(event.getChannel());
             }
         });
             
