@@ -30,7 +30,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // Insert your Discord account's development token
-        String token = "OTM5NTM4MDkzNjY3NjYzOTUy.Yf6TCQ.byy-bmBDSf9bFpexVhNSSJw7F6c";
+        String token = "Place your own Discord token here";
 
         // Loads TalkToMeNow bot into given Discord server
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
