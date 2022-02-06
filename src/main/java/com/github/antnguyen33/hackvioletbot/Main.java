@@ -15,7 +15,7 @@ import org.javacord.api.interaction.MessageComponentInteraction;
  * 
  * @author Anthony Nguyen (anthonyn33@vt.edu)
  * @author Brian Lee (brianl03@vt.edu)
- * @author Preston Ptitzer
+ * @author Preston Pitzer
  * 
  * @version 2022.2.5
  */
@@ -30,8 +30,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // Insert your Discord account's development token
-        String token =
-            "token needed to function, found from develper portal";
+        String token = "OTM5NTM4MDkzNjY3NjYzOTUy.Yf6TCQ.byy-bmBDSf9bFpexVhNSSJw7F6c";
 
         // Loads TalkToMeNow bot into given Discord server
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
@@ -41,8 +40,8 @@ public class Main {
         // recognized by the bot's listeners
         // TODO looking to implement object listener instead of message listener
 
-        // embeded
-
+        // Embedded text object holding list of all bot commands and
+        // descriptions
         EmbedBuilder commands = new EmbedBuilder().setDescription(
             "List of Commands").setAuthor("TalkToMeBot").addField(
                 "Hi! How can I help you?",
@@ -54,6 +53,7 @@ public class Main {
                     + "!games - Play a random online game").setColor(
                         Color.WHITE);
 
+        // Embedded text object holding resources offered at Virginia Tech
         EmbedBuilder resources = new EmbedBuilder().setTitle(
             "Resources at Virginia Tech").setDescription(
                 "List of helpful numbers and people to contact").setAuthor(
@@ -66,69 +66,89 @@ public class Main {
                             + " - Virginia Tech Police Department: 540-382-4343")
             .setColor(Color.ORANGE);
 
-        EmbedBuilder talk = new EmbedBuilder().setTitle("!talk command").setDescription(
-            "What are you dealing with?").setAuthor("TalkToMeBot").addField(
-                "Commands", "!anxiety - Links to managing anxiety\n"
-                    + "!bullying - Links to bullying and cyberbullying resources\n"
-                    + "!depression - Links to depression resources and contacts\n"
-                    + "!assault - Links to assault resources\n"
-                    + "!suicide - Links to suicide prevention resources\n"
-                    + "!vtresources - Resources at Virginia Tech").setColor(
-                        Color.WHITE);
+        // Embedded text objected with mental health resources categorized into
+        // commands
+        EmbedBuilder talk = new EmbedBuilder().setTitle("!talk command")
+            .setDescription("What are you dealing with?").setAuthor(
+                "TalkToMeBot").addField("Commands",
+                    "!anxiety - Links to managing anxiety\n"
+                        + "!bullying - Links to bullying and cyberbullying resources\n"
+                        + "!depression - Links to depression resources and contacts\n"
+                        + "!assault - Links to assault resources\n"
+                        + "!suicide - Links to suicide prevention resources\n"
+                        + "!vtresources - Resources at Virginia Tech").setColor(
+                            Color.WHITE);
 
+        // Embedded text object holding resources related to anxiety
         EmbedBuilder anxiety = new EmbedBuilder().setTitle("!anxiety command")
             .setDescription("Links to managing anxiety").setAuthor(
-                "TalkToMeBot").addField("Definition ","Anxiety is a feeling of fear, dread, and uneasiness. It might cause you to sweat, feel restless and tense, and have a rapid heartbeat. It can be a normal reaction to stress. For example, you might feel anxious when faced with a difficult problem at work, before taking a test, or before making an important decision.")
-            .addInlineField(
-                "Links", "https://www.verywellmind.com/manage-your-anxiety-2584184\n"
-                    + "https://adaa.org/tips\n")
-            .setColor(Color.RED);
-        
+                "TalkToMeBot").addField("Definition ",
+                    "Anxiety is a feeling of fear, dread, and uneasiness. It might cause you to sweat, feel restless and tense, and have a rapid heartbeat. It can be a normal reaction to stress. For example, you might feel anxious when faced with a difficult problem at work, before taking a test, or before making an important decision.")
+            .addInlineField("Links",
+                "https://www.verywellmind.com/manage-your-anxiety-2584184\n"
+                    + "https://adaa.org/tips\n").setColor(Color.RED);
+
+        // Embedded text object holding resources related to bullying
         EmbedBuilder bully = new EmbedBuilder().setTitle("!bullying command")
-            .setDescription("Links to bullying and cyberbullying resources").setAuthor(
-                "TalkToMeBot").addField("Definition", "Bullying is a form of aggressive behavior in which someone intentionally and repeatedly causes another person injury or discomfort. Bullying can take the form of physical contact, words or more subtle actions.")
-            .addInlineField(
-                "Links", "https://www.girlshealth.gov/bullying/school/index.html\n"
+            .setDescription("Links to bullying and cyberbullying resources")
+            .setAuthor("TalkToMeBot").addField("Definition",
+                "Bullying is a form of aggressive behavior in which someone intentionally and repeatedly causes another person injury or discomfort. Bullying can take the form of physical contact, words or more subtle actions.")
+            .addInlineField("Links",
+                "https://www.girlshealth.gov/bullying/school/index.html\n"
                     + "https://www.cdc.gov/violenceprevention/pdf/bullying-factsheet508.pdf\n")
             .setColor(Color.RED);
-        
-        EmbedBuilder depression = new EmbedBuilder().setTitle("!depression command")
-            .setDescription("Links to depression resources and contacts").setAuthor(
-                "TalkToMeBot").addField("Definition", "Depression (major depressive disorder or clinical depression) is a common but serious mood disorder. It causes severe symptoms that affect how you feel, think, and handle daily activities, such as sleeping, eating, or working. To be diagnosed with depression, the symptoms must be present for at least two weeks.")
-            .addInlineField(
-                "Links", "https://www.counseling.org/knowledge-center/mental-health-resources/depression\n"
+
+        // Embedded text object holding resources related to depression
+        EmbedBuilder depression = new EmbedBuilder().setTitle(
+            "!depression command").setDescription(
+                "Links to depression resources and contacts").setAuthor(
+                    "TalkToMeBot").addField("Definition",
+                        "Depression (major depressive disorder or clinical depression) is a common but serious mood disorder. It causes severe symptoms that affect how you feel, think, and handle daily activities, such as sleeping, eating, or working. To be diagnosed with depression, the symptoms must be present for at least two weeks.")
+            .addInlineField("Links",
+                "https://www.counseling.org/knowledge-center/mental-health-resources/depression\n"
                     + "https://www.depression.org/bouldering-indoor-rock-climbing-as-group-therapy-treatment-for-depression")
             .setColor(Color.RED);
-        
+
+        // Embedded text object holding resources related to assault
         EmbedBuilder assault = new EmbedBuilder().setTitle("!assault command")
             .setDescription("Links to managing anxiety").setAuthor(
-                "TalkToMeBot").addField("Definition", "An assault is the act of inflicting physical harm or unwanted physical contact upon a person or, in some specific legal definitions, a threat or attempt to commit such an action.")
-            .addInlineField(
-                "Links", "https://www.rainn.org/\n"
-                    + "https://www.psychologytoday.com/us/blog/trauma-and-hope/201704/overcoming-sexual-assault-symptoms-recovery\n")
+                "TalkToMeBot").addField("Definition",
+                    "An assault is the act of inflicting physical harm or unwanted physical contact upon a person or, in some specific legal definitions, a threat or attempt to commit such an action.")
+            .addInlineField("Links", "https://www.rainn.org/\n"
+                + "https://www.psychologytoday.com/us/blog/trauma-and-hope/201704/overcoming-sexual-assault-symptoms-recovery\n")
             .setColor(Color.RED);
-        
+
+        // Embedded text object holding resources related to suicide
         EmbedBuilder suicide = new EmbedBuilder().setTitle("!suicide command")
             .setDescription("Links to suicide prevention resources").setAuthor(
-                "TalkToMeBot").addField("Definition", "Suicide is death caused by injuring oneself with the intent to die. A suicide attempt is when someone harms themselves with any intent to end their life, but they do not die as a result of their actions.")
-            .addInlineField(
-                "Links & important phone numbers", "https://www.nimh.nih.gov/health/topics/suicide-prevention\n"
+                "TalkToMeBot").addField("Definition",
+                    "Suicide is death caused by injuring oneself with the intent to die. A suicide attempt is when someone harms themselves with any intent to end their life, but they do not die as a result of their actions.")
+            .addInlineField("Links & important phone numbers",
+                "https://www.nimh.nih.gov/health/topics/suicide-prevention\n"
                     + "Suicide Prevention Hotline: 1(800) 273 TALK \n")
             .setColor(Color.RED);
-        
+
+        // Embedded text object holding YouTube link to easy listening music
         EmbedBuilder music = new EmbedBuilder().setTitle("!music command")
             .setDescription("Fun music to listen and destress").setAuthor(
-                "TalkToMeBot").addField("Here's some easy listening to relax to:", "https://www.youtube.com/watch?v=IcFDcXfvWsQ")
-            .setColor(Color.GREEN);
-        
+                "TalkToMeBot").addField(
+                    "Here's some easy listening to relax to:",
+                    "https://www.youtube.com/watch?v=IcFDcXfvWsQ").setColor(
+                        Color.GREEN);
+
+        // Embedded text object holding YouTube link to rain audio
         EmbedBuilder calm = new EmbedBuilder().setTitle("!calm command")
-            .setDescription("Calming rain sounds to help you relax/sleep").setAuthor(
-                "TalkToMeBot").addField("Rain sounds:", "https://www.youtube.com/watch?v=jX6kn9_U8qk")
-            .setColor(Color.GREEN);
-        
+            .setDescription("Calming rain sounds to help you relax/sleep")
+            .setAuthor("TalkToMeBot").addField("Rain sounds:",
+                "https://www.youtube.com/watch?v=jX6kn9_U8qk").setColor(
+                    Color.GREEN);
+
+        // Embedded text object holding a YouTube search result page of cat
+        // videos
         EmbedBuilder cats = new EmbedBuilder().setTitle("!cats command")
             .setDescription("Links to funny cat videos").setAuthor(
-                "TalkToMeBot").addField("Find fun cat videos:", "https://www.youtube.com/results?search_query=funny+cat+videos")
+                "TalkToMeBot").addField("Find fun cat videos:",
+                    "https://www.youtube.com/results?search_query=funny+cat+videos")
             .setColor(Color.GREEN);
 
         // Listener for !anxiety command
@@ -137,41 +157,43 @@ public class Main {
                 event.getChannel().sendMessage(anxiety);
             }
         });
-        
+
+        // Listener for !help command
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!help")) {
                 event.getChannel().sendMessage(commands);
             }
         });
-        
+
+        // Listener for !talk command
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!talk")) {
                 event.getChannel().sendMessage(talk);
             }
         });
-        
-     // Listener for !bullying command
+
+        // Listener for !bullying command
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!bullying")) {
                 event.getChannel().sendMessage(bully);
             }
         });
-        
-     // Listener for !depression command
+
+        // Listener for !depression command
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!depression")) {
                 event.getChannel().sendMessage(depression);
             }
         });
-        
-     // Listener for !assault command
+
+        // Listener for !assault command
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!assault")) {
                 event.getChannel().sendMessage(assault);
             }
         });
-        
-     // Listener for !suicide command
+
+        // Listener for !suicide command
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!suicide")) {
                 event.getChannel().sendMessage(suicide);
@@ -179,17 +201,13 @@ public class Main {
         });
 
         // Listener for !vtresources command
-        // !vtresources - Displays available support resources offered by
-        // Virginia Tech
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!vtresources")) {
                 event.getChannel().sendMessage(resources);
             }
         });
 
-
         // Listener for !music
-        // !music - Provides a link to a YouTube music playlist
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!music")) {
                 event.getChannel().sendMessage(music);
@@ -197,7 +215,6 @@ public class Main {
         });
 
         // Listener for !calm
-        // !calm - Provides a link to a YouTube audio
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!calm")) {
                 event.getChannel().sendMessage(calm);
@@ -205,13 +222,15 @@ public class Main {
         });
 
         // Listener for !cats
-        // !cats - Provides link to search results for cat videos on YouTube
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!cats")) {
                 event.getChannel().sendMessage(cats);
             }
         });
 
+        // Listener for !talkmenu
+        // !talkmenu - creates embedded prompt with buttons for user to select
+        // what type of mental health resources they need
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!talkmenu")) {
                 new MessageBuilder().setContent(
@@ -225,7 +244,10 @@ public class Main {
                                                 .getChannel());
             }
         });
-        
+
+        // Switch component for !talkmenu buttons
+        // Each case corresponds to each button with resources related to the
+        // matching mental health issue
         api.addMessageComponentCreateListener(event -> {
             MessageComponentInteraction messageComponentInteraction = event
                 .getMessageComponentInteraction();
@@ -234,8 +256,10 @@ public class Main {
             switch (customId) {
                 case "anxiety1":
                     messageComponentInteraction.createImmediateResponder()
-                        .setContent("https://www.counseling.org/knowledge-center/mental-health-resources/depression\r\n\n"
-                            + "https://www.depression.org/bouldering-indoor-rock-climbing-as-group-therapy-treatment-for-depression").respond();
+                        .setContent(
+                            "https://www.counseling.org/knowledge-center/mental-health-resources/depression\r\n\n"
+                                + "https://www.depression.org/bouldering-indoor-rock-climbing-as-group-therapy-treatment-for-depression")
+                        .respond();
                     break;
                 case "bully1":
                     messageComponentInteraction.createImmediateResponder()
@@ -246,21 +270,25 @@ public class Main {
                 case "depression1":
                     messageComponentInteraction.createImmediateResponder()
                         .setContent("https://adaa.org/tips\r\n\n"
-                            + "https://www.verywellmind.com/manage-your-anxiety-2584184").respond();
+                            + "https://www.verywellmind.com/manage-your-anxiety-2584184")
+                        .respond();
                     break;
                 case "assault1":
                     messageComponentInteraction.createImmediateResponder()
-                        .setContent("https://www.cdc.gov/violenceprevention/pdf/bullying-factsheet508.pdf\r\n\n"
-                            + "https://www.girlshealth.gov/bullying/school/index.html").respond();
+                        .setContent(
+                            "https://www.cdc.gov/violenceprevention/pdf/bullying-factsheet508.pdf\r\n\n"
+                                + "https://www.girlshealth.gov/bullying/school/index.html")
+                        .respond();
                     break;
                 case "suicide1":
                     messageComponentInteraction.createImmediateResponder()
                         .setContent("1(800) 273 TALK\n"
-                            + "https://www.nimh.nih.gov/health/topics/suicide-prevention").respond();
+                            + "https://www.nimh.nih.gov/health/topics/suicide-prevention")
+                        .respond();
                     break;
             }
         });
-        
+
         // String array of preset links to online browser games
         String[] gameLinks = { "https://puzzles.usatoday.com/",
             "https://tetris.com/play-tetris",
