@@ -31,7 +31,7 @@ public class Main {
     public static void main(String[] args) {
         // Insert your Discord account's development token
         String token =
-            "code";
+            "token needed to function, found from develper portal";
 
         // Loads TalkToMeNow bot into given Discord server
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
@@ -49,7 +49,7 @@ public class Main {
                 "!talk or !talkmenu - Offers support resources for multiple difficulties\n"
                     + "!vtresources - Available resources at Virginia Tech\n"
                     + "!music - Links a YouTube playlist of relaxing music\n"
-                    + "!rain - Links raining audio to help you sleep\n"
+                    + "!calm - Links raining audio to help you sleep and relax\n"
                     + "!cats - Links a funny cat video on YouTube\n"
                     + "!games - Play a random online game").setColor(
                         Color.WHITE);
@@ -67,7 +67,7 @@ public class Main {
             .setColor(Color.ORANGE);
 
         EmbedBuilder talk = new EmbedBuilder().setTitle("!talk command").setDescription(
-            "What are you dealing with now").setAuthor("TalkToMeBot").addField(
+            "What are you dealing with?").setAuthor("TalkToMeBot").addField(
                 "Commands", "!anxiety - Links to managing anxiety\n"
                     + "!bullying - Links to bullying and cyberbullying resources\n"
                     + "!depression - Links to depression resources and contacts\n"
