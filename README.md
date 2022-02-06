@@ -19,20 +19,20 @@ To use this bot in your own server, set up is a relativly straighfoward process.
 
 TalkToMeNowBot supports a variety of commands.
 
-######Common Commands
+###### Common Commands
 
-> !help - returns menu with various commands 
-> !talk or !talkmeny - Offers support resources for multiple difficulties
-> !vtresources - Available resources at Virginia Tech
-> !music - Links a YouTube playlist of relaxing music
-> !calm - Links raining audio to help you sleep
-> !cats - Links a funny cat video on YouTube
-> !games - Play a random online game"
+- > !help - returns menu with various commands 
+- > !talk or !talkmenu - Offers support resources for multiple difficulties
+- > !vtresources - Available resources at Virginia Tech
+- > !music - Links a YouTube playlist of relaxing music
+- > !calm - Links raining audio to help you sleep 
+- > !cats - Links a funny cat video on YouTube
+- > !games - Play a random online game"
 
-######Commands within !talk
+###### Commands within !talk
 
-> !anxiety - Links to managing anxiety
-> !bullying - Links to bullying and cyberbullying resources
-> !depression - Links to depression resources and contacts
-> !assault - Links to assault resources
-> !suicide - Links to suicide prevention resources
+- > !anxiety - Links to managing anxiety
+- > !bullying - Links to bullying and cyberbullying resources
+- > !depression - Links to depression resources and contacts
+- > !assault - Links to assault resources
+- > !suicide - Links to suicide prevention resources
