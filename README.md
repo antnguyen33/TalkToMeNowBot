@@ -4,7 +4,7 @@ HackViolet2022 Submission
 TalkToMeNowBot is a assisted self-help application that provides users with various mental health resources based on prompts given by natural language and/or message buttons.
 
 ## Set Up
-To use this bot in your own server, set up is a relativly straighfoward process.
+To use this bot in your own server, set up is a relatively straightforward process.
 1. Be sure you have a Discord account and are logged in.
 2. Navigate to Discord Developer Portal located here: https://discord.com/developers/applications. 
 3. Click "New Application" button and give the aplication a name.
